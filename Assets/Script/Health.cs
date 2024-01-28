@@ -7,10 +7,19 @@ public class Health : MonoBehaviour
     public float health;
     public float maxHealth;
 
+    public bool isPlayer;
 
     private void Start()
     {
-        maxHealth = LevelManager.Instance.enemyHealth;
+        if (isPlayer)
+        {
+
+        }
+        else
+        {
+            maxHealth = LevelManager.Instance.enemyHealth;
+        }
+
         health = maxHealth;
     }
 
@@ -33,13 +42,14 @@ public class Health : MonoBehaviour
 
     public void Death()
     {
-        if (gameObject.tag == "Player")
+        if (isPlayer)
         {
-            //Player died
+            
         }
         else
         {
             //Enemy died
+            LevelManager.Instance.waveManager.EnemyKilled();
             Destroy(gameObject);
         }
     }
