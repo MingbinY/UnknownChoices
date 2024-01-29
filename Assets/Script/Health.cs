@@ -43,7 +43,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void Death()
+    public virtual void Death()
     {
         if (isPlayer)
         {
@@ -51,7 +51,7 @@ public class Health : MonoBehaviour
         }
         else
         {
-            //Enemy died
+            //Enemyd ied
             LevelManager.Instance.waveManager.EnemyKilled();
             Destroy(gameObject);
         }
