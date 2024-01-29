@@ -467,6 +467,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   maxHealth: 2
+  isPlayer: 0
+  healthComponent: {fileID: 7548307050139772978}
+  healthSlider: {fileID: 2525061558266481101}
 --- !u!1 &8327317785142231430
 GameObject:
   m_ObjectHideFlags: 0

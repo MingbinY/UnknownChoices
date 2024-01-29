@@ -1671,7 +1671,8 @@ MonoBehaviour:
   health: 1
   maxHealth: 1
   isPlayer: 1
-  playerWithHealth: {fileID: 5393215579111688472}
+  healthComponent: {fileID: 5393215579111688477}
+  healthSlider: {fileID: 1091047681}
 --- !u!1 &1334742179 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9005220659476430823, guid: 2d3a85ecde41a8246a79669975912b74,

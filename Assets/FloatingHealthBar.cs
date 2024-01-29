@@ -8,23 +8,27 @@ public class FloatingHealthBar : MonoBehaviour
     public float health = 1;
     public float maxHealth = 1;
     public bool isPlayer = false;
-    public GameObject playerWithHealth = null;
+    public Health healthComponent;
+    public Slider healthSlider;
 
+    private void Awake()
+    {
+    }
     // Update is called once per frame
     void Update()
     {
         Debug.Log(maxHealth);
-        if(isPlayer && playerWithHealth!=null){
-            health = playerWithHealth.transform.parent.GetComponent<Health>().health;
-            maxHealth = playerWithHealth.transform.parent.GetComponent<Health>().maxHealth;
+        if(isPlayer && healthComponent != null){
+            health = healthComponent.health;
+            maxHealth = healthComponent.maxHealth;
         }else{
-            health = transform.parent.GetComponent<Health>().health;
-            maxHealth = transform.parent.GetComponent<Health>().maxHealth;
+            health = healthComponent.health;
+            maxHealth = healthComponent.maxHealth;
         }
 
         if(!isPlayer)
             transform.rotation = Camera.main.transform.rotation;
         // transform.LookAt(Camera.main.transform);
-        transform.Find("Slider").GetComponent<Slider>().value = health / maxHealth;
+        healthSlider.value = health / maxHealth;
     }
 }
