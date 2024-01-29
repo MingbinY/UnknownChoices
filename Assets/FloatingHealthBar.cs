@@ -15,11 +15,11 @@ public class FloatingHealthBar : MonoBehaviour
     {
         Debug.Log(maxHealth);
         if(isPlayer && playerWithHealth!=null){
-            playerWithHealth.transform.parent.GetComponent<Health>().health = health;
-            playerWithHealth.transform.parent.GetComponent<Health>().maxHealth = maxHealth;
+            health = playerWithHealth.transform.parent.GetComponent<Health>().health;
+            maxHealth = playerWithHealth.transform.parent.GetComponent<Health>().maxHealth;
         }else{
-            transform.parent.GetComponent<Health>().health = health;
-            transform.parent.GetComponent<Health>().maxHealth = maxHealth;
+            health = transform.parent.GetComponent<Health>().health;
+            maxHealth = transform.parent.GetComponent<Health>().maxHealth;
         }
 
         if(!isPlayer)
