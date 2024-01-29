@@ -5,10 +5,50 @@ using UnityEngine;
 
 public class OutcomeController : MonoBehaviour
 {
-    void OnTriggerEnter(){
-        //为玩家添加数值
+    public bool isKnownOutcome;
+    public GameObject outcomeUI;
 
-        gameObject.SetActive(false);
+    public float knownOutcomeHealth = 5;
+    public float knownOutcomeAttack = 1;
+
+    public float unknownOutcomeHealthPenalty = 0.7f;
+    public float unknownOutcomeAttack = 20;
+
+    public void OnSelectPrice()
+    {
+        //Give Player Price
+        if (isKnownOutcome)
+            KnownOutcome();
+        else
+            UnknowOutcome();
+        LevelManager.Instance.waveManager.HidePriceCube();
+        LevelManager.Instance.NextLevel();
     }
 
+    public void KnownOutcome()
+    {
+        PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+        Gun gun = FindObjectOfType<Gun>();
+        playerHealth.health += knownOutcomeHealth;
+        gun.damage += knownOutcomeAttack;
+    }
+
+    public void UnknowOutcome()
+    {
+        bool isBad = Random.Range(0,100) <= 50 ? false : true;
+
+        PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+        Gun gun = FindObjectOfType<Gun>();
+
+        if (isBad)
+        {
+            playerHealth.health = playerHealth.health * unknownOutcomeHealthPenalty;
+            gun.damage += 0.5f * knownOutcomeAttack;
+        }
+        else
+        {
+            playerHealth.health = 2 * knownOutcomeHealth;
+            gun.damage += 1.5f * gun.damage;
+        }
+    }
 }

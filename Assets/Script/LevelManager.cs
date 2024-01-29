@@ -16,18 +16,17 @@ public class LevelManager : MonoBehaviour
     {
         Instance = this;
         currentLevel = -1;
-        NextLevel();
     }
 
-    private void Update()
+    private void Start()
     {
-        
+        NextLevel();
     }
 
     public void NextLevel()
     {
         currentLevel++;
-        enemyHealth = Mathf.Pow(1.5f, currentLevel);
+        enemyHealth = 1+Mathf.Pow(1.5f, currentLevel);
         enemyDamage = currentLevel+1;
         waveManager.SpawnEnemy();
     }

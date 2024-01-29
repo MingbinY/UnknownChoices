@@ -54,6 +54,11 @@ public class Gun : MonoBehaviour
             {
                 health.TakeDamage(damage);
             }
+            else if (hit.collider.GetComponent<OutcomeController>() != null)
+            {
+                // hit outcome
+                hit.collider.GetComponent<OutcomeController>().OnSelectPrice();
+            }
         }
 
         if (impactEffect)
