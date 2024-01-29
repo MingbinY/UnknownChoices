@@ -41,8 +41,6 @@ public class WaveManager : MonoBehaviour
     public void LevelEnd()
     {
         killCount = 0;
-        // Cube的UI和数值生成
-        // 显示Cube
         foreach (GameObject cube in cubesList){
             cube.SetActive(true);
         }

@@ -52,6 +52,7 @@ public class Gun : MonoBehaviour
             Health health = hitObj.GetComponent<Health>();
             if(health != null)
             {
+                Debug.Log(damage);
                 health.TakeDamage(damage);
             }
             else if (hit.collider.GetComponent<OutcomeController>() != null)
@@ -67,5 +68,10 @@ public class Gun : MonoBehaviour
             impactEffect.transform.forward = hit.normal;
             impactEffect.Emit(1);
         }
+
+        # if UNITY_EDITOR
+        Debug.Log(hit.collider);
+        # endif
+
     }
 }

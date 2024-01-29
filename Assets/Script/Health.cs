@@ -24,7 +24,10 @@ public class Health : MonoBehaviour
     }
 
     public void TakeDamage(float damage)
-    {
+    { 
+        # if UNITY_EDITOR
+        Debug.Log("TakeDamage");
+        # endif
         if (health < damage)
         {
             health = 0;
