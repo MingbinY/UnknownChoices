@@ -27,7 +27,7 @@ public class Gun : MonoBehaviour
         muzzleFlash = GetComponentsInChildren<ParticleSystem>().ToList();
     }
     private void Update()
-    {
+    {  
         if (Input.GetMouseButton(0))
         {
             Fire();

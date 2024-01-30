@@ -34,6 +34,7 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        
         if (enemyState == EnemyState.chase)
         {
             ChaseUpdate();
@@ -48,6 +49,7 @@ public class EnemyController : MonoBehaviour
     {
         if (Vector3.Distance(player.transform.position, transform.position) < attackRange)
             enemyState = EnemyState.attack;
+        agent.updateRotation = true;
         agent.stoppingDistance = attackRange - 0.2f;
         agent.SetDestination(player.transform.position);
     }
@@ -57,11 +59,17 @@ public class EnemyController : MonoBehaviour
         if (Vector3.Distance(player.transform.position, transform.position) > attackRange)
             enemyState = EnemyState.chase;
 
+        FacePlayer();
         if (Time.time  -  lastAttackTime < attackInterval)
         {
             return;
         }
         lastAttackTime = Time.time;
         player.GetComponent<PlayerHealth>().TakeDamage(LevelManager.Instance.enemyDamage);
+    }
+
+    void FacePlayer()
+    {
+        transform.forward = player.transform.position - transform.position;
     }
 }
