@@ -22,19 +22,24 @@ public class EnemyController : MonoBehaviour
 
     NavMeshAgent agent;
 
+    Animator animator;
+
+    public AudioClip roarClip;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         player = FindObjectOfType<PlayerHealth>().gameObject;
+        animator = GetComponentInChildren<Animator>();
         enemyState = EnemyState.chase;
         agent.speed = moveSpeed;
-        agent.stoppingDistance = attackRange-0.2f;
+        agent.stoppingDistance = attackRange;
         lastAttackTime = Time.time;
     }
 
     private void Update()
     {
-        
+        animator.SetFloat("Speed", agent.velocity.magnitude);
         if (enemyState == EnemyState.chase)
         {
             ChaseUpdate();
@@ -50,14 +55,18 @@ public class EnemyController : MonoBehaviour
         if (Vector3.Distance(player.transform.position, transform.position) < attackRange)
             enemyState = EnemyState.attack;
         agent.updateRotation = true;
-        agent.stoppingDistance = attackRange - 0.2f;
+        agent.stoppingDistance = attackRange;
         agent.SetDestination(player.transform.position);
     }
 
     void AttackUpdate()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) > attackRange)
+        if (Vector3.Distance(player.transform.position, transform.position) > attackRange + 1f)
+        {
             enemyState = EnemyState.chase;
+            return;
+        }
+
 
         FacePlayer();
         if (Time.time  -  lastAttackTime < attackInterval)
