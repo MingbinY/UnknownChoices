@@ -14,11 +14,11 @@ public class PlayerHealth : Health
         base.TakeDamage(damage);
         if (takeHitClip != null && GetComponent<AudioSource>())
         {
-            Debug.Log("TakeDamageInPlayerHealth");
             GetComponent<AudioSource>().PlayOneShot(takeHitClip);
-            BloodyScreenEffect();
         }
+        StartCoroutine(BloodyScreenEffect());
     }
+
     public override void Death()
     {
         if (isPlayer)
@@ -45,7 +45,7 @@ public class PlayerHealth : Health
 
     // 获取bloodyScreen下的Image组件
     var image = bloodyScreen.GetComponentInChildren<Image>();
-
+    Debug.Log("TakeDamageInPlayerHealth");
     // 设置初始alpha值为1（完全可见）
     Color startColor = image.color;
     startColor.a = 1f;
