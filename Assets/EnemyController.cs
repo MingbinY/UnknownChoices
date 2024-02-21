@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
         enemyState = EnemyState.chase;
-        agent.speed = moveSpeed;
+        agent.speed = LevelManager.Instance.enemySpeed;
         agent.stoppingDistance = attackRange;
         lastAttackTime = Time.time;
         lastRoarTime = Time.time;

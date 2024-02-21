@@ -21,6 +21,8 @@ public class OutcomeController : MonoBehaviour
             KnownOutcome();
         else
             UnknowOutcome();
+
+        GameManager.Instance.RewardSelected(!isKnownOutcome);
         LevelManager.Instance.waveManager.HidePriceCube();
         LevelManager.Instance.NextLevel();
     }
@@ -30,6 +32,10 @@ public class OutcomeController : MonoBehaviour
         PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
         Gun gun = FindObjectOfType<Gun>();
         playerHealth.health += knownOutcomeHealth;
+        if (playerHealth.health > playerHealth.maxHealth)
+        {
+            playerHealth.health = playerHealth.maxHealth;
+        }
         gun.damage += knownOutcomeAttack;
     }
 
@@ -42,12 +48,16 @@ public class OutcomeController : MonoBehaviour
 
         if (isBad)
         {
-            playerHealth.health = playerHealth.health * unknownOutcomeHealthPenalty;
+            playerHealth.TakeDamage(playerHealth.maxHealth * unknownOutcomeHealthPenalty);
             gun.damage += 0.5f * knownOutcomeAttack;
         }
         else
         {
-            playerHealth.health = 2 * knownOutcomeHealth;
+            playerHealth.health += 2 * knownOutcomeHealth;
+            if (playerHealth.health > playerHealth.maxHealth)
+            {
+                playerHealth.health = playerHealth.maxHealth;
+            }
             gun.damage += 1.5f * gun.damage;
         }
     }

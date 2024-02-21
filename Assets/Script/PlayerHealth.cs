@@ -23,7 +23,7 @@ public class PlayerHealth : Health
     {
         if (isPlayer)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameManager.Instance.GameOver(false);
         }
         else
         {
