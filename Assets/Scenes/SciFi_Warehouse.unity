@@ -32962,7 +32962,7 @@ PrefabInstance:
     - target: {fileID: 2812911782984192075, guid: 055a0385e6d7e8b4a899f7945b9fe503,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4.06
       objectReference: {fileID: 0}
     - target: {fileID: 2812911782984192075, guid: 055a0385e6d7e8b4a899f7945b9fe503,
         type: 3}
@@ -32972,7 +32972,7 @@ PrefabInstance:
     - target: {fileID: 2812911782984192075, guid: 055a0385e6d7e8b4a899f7945b9fe503,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 4.93
       objectReference: {fileID: 0}
     - target: {fileID: 2812911782984192075, guid: 055a0385e6d7e8b4a899f7945b9fe503,
         type: 3}
@@ -56311,7 +56311,7 @@ PrefabInstance:
     - target: {fileID: 5846815576786293710, guid: 9504c7a7ab748e541ad328f42afc0325,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4.2
       objectReference: {fileID: 0}
     - target: {fileID: 5846815576786293710, guid: 9504c7a7ab748e541ad328f42afc0325,
         type: 3}
@@ -56321,7 +56321,7 @@ PrefabInstance:
     - target: {fileID: 5846815576786293710, guid: 9504c7a7ab748e541ad328f42afc0325,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 7.16
       objectReference: {fileID: 0}
     - target: {fileID: 5846815576786293710, guid: 9504c7a7ab748e541ad328f42afc0325,
         type: 3}
@@ -62056,6 +62056,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 100
   isPlayer: 1
+  deathClip: {fileID: 0}
   takeHitClip: {fileID: 0}
 --- !u!1 &2863522816731087554
 GameObject:
