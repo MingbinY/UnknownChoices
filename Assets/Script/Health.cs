@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     public float maxHealth;
 
     public bool isPlayer;
+    public AudioClip deathClip;
 
     private void Start()
     {
@@ -55,5 +56,7 @@ public class Health : MonoBehaviour
             LevelManager.Instance.waveManager.EnemyKilled();
             Destroy(gameObject);
         }
+
+        GetComponent<AudioSource>().PlayOneShot(deathClip);
     }
 }

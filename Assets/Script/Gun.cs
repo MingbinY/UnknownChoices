@@ -44,7 +44,7 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         var tracer = Instantiate(tracerEffect, muzzle.position, Quaternion.identity);
         tracer.AddPosition(muzzle.position);
-        Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, float.MaxValue);
+        Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, float.MaxValue, ~rayIgnoreLayer);
         if (hit.collider)
         {
             tracer.transform.position = hit.point;
