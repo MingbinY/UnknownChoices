@@ -23,7 +23,7 @@ public class Health : MonoBehaviour
         health = maxHealth;
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     { 
         # if UNITY_EDITOR
         Debug.Log("TakeDamage");
