@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Laser
+  m_Name: Laser_Known
   m_Shader: {fileID: -6465566751694194690, guid: dd15ced0800b37d4b96056cb297f923e,
     type: 3}
   m_Parent: {fileID: 0}
