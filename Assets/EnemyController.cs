@@ -25,21 +25,28 @@ public class EnemyController : MonoBehaviour
     Animator animator;
 
     public AudioClip roarClip;
+    AudioSource audioSource;
+    float roarInterval;
+    float lastRoarTime;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         player = FindObjectOfType<PlayerHealth>().gameObject;
         animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
         enemyState = EnemyState.chase;
         agent.speed = moveSpeed;
         agent.stoppingDistance = attackRange;
         lastAttackTime = Time.time;
+        lastRoarTime = Time.time;
+        roarInterval = Random.Range(3, 10);
     }
 
     private void Update()
     {
         animator.SetFloat("Speed", agent.velocity.magnitude);
+        Roar();
         if (enemyState == EnemyState.chase)
         {
             ChaseUpdate();
@@ -80,5 +87,14 @@ public class EnemyController : MonoBehaviour
     void FacePlayer()
     {
         transform.forward = player.transform.position - transform.position;
+    }
+
+    void Roar()
+    {
+        if (Time.time > lastRoarTime + roarInterval)
+        {
+            audioSource.PlayOneShot(roarClip);
+            lastRoarTime = Time.time;
+        }
     }
 }

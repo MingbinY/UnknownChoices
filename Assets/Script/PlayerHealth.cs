@@ -27,6 +27,8 @@ public class PlayerHealth : Health
             LevelManager.Instance.waveManager.EnemyKilled();
             Destroy(gameObject);
         }
+
+        GetComponent<AudioSource>().PlayOneShot(deathClip);
     }
 }
 
