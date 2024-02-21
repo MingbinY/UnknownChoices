@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
     public void NextLevel()
     {
         currentLevel++;
-        enemyHealth = 1+Mathf.Pow(1.5f, currentLevel);
+        enemyHealth = 1+Mathf.Pow(1.6f, currentLevel);
         enemyDamage = currentLevel+1;
         waveManager.SpawnEnemy();
     }
