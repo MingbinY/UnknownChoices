@@ -9,9 +9,9 @@ public class PriceHint : MonoBehaviour
 
     private void Update()
     {
-        if (priceParentObj != null && hintObj)
+        if (hintObj)
         {
-            hintObj.SetActive(priceParentObj.activeSelf);
+            hintObj.SetActive(LevelManager.Instance.waveManager.levelEnded);
         }    
     }
 }

@@ -10,6 +10,7 @@ public class FloatingHealthBar : MonoBehaviour
     public bool isPlayer = false;
     public Health healthComponent;
     public Slider healthSlider;
+    public Text healthNumber;
 
     private void Awake()
     {
@@ -30,5 +31,7 @@ public class FloatingHealthBar : MonoBehaviour
             transform.rotation = Camera.main.transform.rotation;
         // transform.LookAt(Camera.main.transform);
         healthSlider.value = health / maxHealth;
+
+        healthNumber.text = healthComponent.health.ToString();
     }
 }
