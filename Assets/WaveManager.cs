@@ -32,6 +32,7 @@ public class WaveManager : MonoBehaviour
 
     public void SpawnEnemy()
     {
+        levelEnded = false;
         foreach (Transform t in spawnPoints)
         {
             GameObject newEnemy = Instantiate(enemyPrefab, t.position, Quaternion.identity);
